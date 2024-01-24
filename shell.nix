@@ -10,6 +10,7 @@ in
 mkShell {
   venvDir = "./.venv";
   buildInputs = [
+    glibc
     pythonPackages.python
     pythonPackages.venvShellHook
   ];
@@ -19,6 +20,6 @@ mkShell {
   '';
 
   shellHook = ''
-    LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/
+    export LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib/:/run/opengl-driver/lib/
   '';
 }
