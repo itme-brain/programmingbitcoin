@@ -17,6 +17,7 @@
   packages.${system}.default = with pkgs;
     mkShell {
       buildInputs = with py; [
+        glibc
         python
         venvShellHook
       ];
@@ -27,6 +28,7 @@
       '';
       postShellHook = ''
         unset SOURCE_DATE_EPOCH
+        export LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib/
       '';
     };
   };
